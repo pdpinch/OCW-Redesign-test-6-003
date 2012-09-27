@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Ask an Engineer: MIT Engineering</title>
+	<meta name="robots" content="noindex">
+    <link type="text/css" rel="stylesheet" href="ask_embed_data/e53dfc4deab97bfa68c98033bae4b5ab.css" media="screen">
+<style type="text/css">
+		html { font-size:100%; overflow:hidden; }
+		body { background-color:#fff; font-family:"Helvetica Neue",Arial,Helvetica,sans-serif; font-size:0.5em; line-height:1.4; overflow:hidden; }
+		#tagline { position:fixed; bottom:0; right:0; display:none; z-index:1000; }
+			#tagline a { color:#fff; display:block; background-color:#000; background-color:rgba(0,0,0,0.75); padding:0.1em 0.4em; }
+			#tagline a:hover { background-color:#000; color:#ff3;}
+		#shownext { position:fixed; top:0; right:0; display:none; z-index:100; color:#fff; background-color:rgba(0,0,0,0.75); cursor:pointer; padding:0.1em 0.4em; }
+		#shownext:hover { background-color:#000; color:#ff3;}
+		.lw_widget { width:100%; overflow:hidden; margin:0; padding:0; }
+			.lw_widget ul li { position:absolute; left:100%; top:50%; width:100%; margin:0; padding:0; }
+				.lw_widget ul li .question { padding:10px; top:50%; }
+					.lw_widget ul li a { display:block; min-width:6em; }
+		.headline { font-size:1.8em; line-height:1em; }
+		a { text-decoration:none; }
+		.question a:hover { color:#222 !important; }
+		.biology a { color:#960038; }
+		.energy a { color:#2a86a6; }
+		.environment a { color:#95a528; }
+		.communications a { color:#7f7f7f; }
+		.computation a { color:#dca021; }
+		.materials a { color:#2e7974; }
+		.design a { color:#5f3116; }
+		.transportation a { color:#ac9a67; }
+		.manufacturing a { color:#cf751e; }
+	</style>
+	<!--[if lte IE 8]><style type="text/css">#tagline,#shownext { background-color:#000; }</style><![endif]-->
+</head>
+<body style="font-size: 0.4em;" class="lw_disable_toolbar">
+<div style="display: block;" id="shownext">next »</div>
+<div style="display: block;" id="tagline"><a href="http://engineering.mit.edu/ask/">Ask an Engineer at MIT »</a></div>
+<script type="text/javascript" src="ask_embed_data/jquery.js"></script>
+<script type="text/javascript">
+$(function() { // DOM ready
+	var height = 150-20,
+		width = $(window).width()-20,
+		tag = false,
+		pause = 3,
+		gtracking = false,
+		body = $('body'),
+		duration = 2000, // animation duration
+		path = (tag ? '/ask/ask_embed_tag.php?tag='+tag : '/ask/ask_embed_questions.php'), // the path for the questions
+		count = 0, // how many questions have shown so far
+		shownext = $('#shownext'),
+		nextQuestion = function() {
+			var current = body.find('.lw_widget li').eq(0), // the visible item
+				next = body.find('.lw_widget li').eq(1); // and the next one
+			if(!next.length) { // if no items are remaining
+				$.get(path,function(data) { // then we need to load more items
+					var questions = $('<div/>').append(data).shuffle().appendTo(body);
+					if(gtracking) {
+						questions.find('a').each(function() {
+							$(this).attr('href','%%Click_URL_UNESC%% '+$(this).attr('href'));
+						});
+					}
+					nextQuestion(); // and try to show it again
+				});
+			} else {
+				shownext.fadeOut();
+				count++; // increment the count
+				current.animate({opacity:0,left:'-100%',top:'+=10%'},duration,function() { // slide the current item left
+					$(this).remove(); // and remove it
+				});
+				next.css({opacity:0,left:'100%',top:'50%',marginTop:-next.outerHeight()/2}).animate({opacity:1,left:'0%',top:'-=10%'},duration,function() {
+					if(!pause||count<pause) setTimeout(nextQuestion,5000); // once it’s showing, show the next question in five seconds, unless we’ve reached the pause limit
+					else { // otherwise, if we've reached the pause limit
+						shownext.fadeIn(); // fade in the next control
+					}
+				});
+			}
+		};
+		$.get(path,function(data) {
+			var questions = $('<div/>').append(data).shuffle().appendTo(body),
+				lastheight = 0,
+				tallest = questions.find('li').filter(function() { // find the tallest question
+					var height = $(this).outerHeight(),
+						taller = height>lastheight;
+					lastheight = height;
+					return taller; // by throwing out each question shorter than the last one
+				}).eq(-1), // and selecting the last one
+				tallest_q = tallest.find('.question a'), // and the question inside it (since it'll overflow horizontally)
+				em = 0.5;
+			while(tallest.outerHeight()<(0.5*height)&&tallest_q.outerWidth()<=width&&em<5) {  // until the tallest question is half the available height or wider than the body)
+				em+=0.1;
+				body.css('font-size',em+'em'); // increase its height by 0.1em
+			}
+			em-=0.1; // step back one step
+			body.css('font-size',em+'em'); // increase its height by 0.1em
+			if(gtracking) {
+				questions.find('a').each(function() {
+					$(this).attr('href','%%Click_URL_UNESC%% '+$(this).attr('href'));
+				});
+			}
+			$('#tagline').fadeIn(1000);
+			$('a').live('click',function() {
+				top.location = $(this).attr('href'); // bust out of the iframe
+				return false;
+			});
+			nextQuestion();
+		});
+		shownext.click(nextQuestion);
+});
+$.fn.extend({
+	shuffle:function() { // adapted from http://yelotofu.com/2008/08/jquery-shuffle-plugin/
+		return this.each(function() {
+			var items = $(this).children();
+			if(items.length>1) {
+				for(
+					var j, x, i = items.length; i;
+					j = parseInt(Math.random() * i),
+					x = items[--i], items[i] = items[j], items[j] = x
+				);
+				return $(this).html(items);
+			} else { return this; }
+		});
+	}
+});
+</script>
+<script type="text/javascript">
+/*<![CDATA[*/
+var livewhale={"livewhale_dir":"\/livewhale","liveurl_dir":"\/live","page":"\/ask\/ask_embed.php","ajax_timeout":30,"has_pages_editor":"true"};
+/*]]>*/
+</script>
+<script type="text/javascript" src="ask_embed_data/211560402dfe90c579ee85f9caf78da1.js"></script>
+
+<div><div id="lw_widget_224296" class="lw_widget lw_widget_news">
+  <ul>
+    
+  </ul>
+</div><div id="lw_widget_2232d9" class="lw_widget lw_widget_news">
+  <ul>
+    
+  </ul>
+</div><div id="lw_widget_2248d0" class="lw_widget lw_widget_news">
+  <ul>
+    
+  </ul>
+</div><div id="lw_widget_2242ef" class="lw_widget lw_widget_news">
+  <ul>
+    <li style="opacity: 1; left: 0%; top: 40%; margin-top: -27.5px;" class="lw_item_1">
+      <div class="environment question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/872-how-many-wind-turbines-would-it-take-to-power-all">How many wind turbines would it take to power all of New York City?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div><div id="lw_widget_2234d6" class="lw_widget lw_widget_news">
+  <ul>
+    <li class="lw_item_1">
+      <div class="biology question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/1700-how-do-glucometers-work">How do glucometers work?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div><div id="lw_widget_22329d" class="lw_widget lw_widget_news">
+  <ul>
+    <li class="lw_item_1">
+      <div class="design question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/1865-what-are-the-technological-obstacles-to-colonizing">What are the technological obstacles to colonizing another planet?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div><div id="lw_widget_224888" class="lw_widget lw_widget_news">
+  <ul>
+    <li class="lw_item_1">
+      <div class="transportation question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/1691-can-i-start-my-car-with-a-voice-command">Can I start my car with a voice command?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div><div id="lw_widget_223856" class="lw_widget lw_widget_news">
+  <ul>
+    <li class="lw_item_1">
+      <div class="materials question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/2082-why-cant-magnetism-be-used-as-a-source-of-energy">Why can’t magnetism be used as a source of energy?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div><div id="lw_widget_224676" class="lw_widget lw_widget_news">
+  <ul>
+    <li class="lw_item_1">
+      <div class="manufacturing question">
+        <div class="headline">
+          <a href="http://engineering.mit.edu/live/news/939-how-do-electricity-transmission-lines-withstand-a">How do electricity transmission lines withstand a lifetime of exposure to the elements?</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div></div></body></html>

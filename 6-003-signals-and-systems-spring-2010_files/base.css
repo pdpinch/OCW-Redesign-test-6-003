@@ -1,0 +1,638 @@
+/*******************************************************************************************
+		MIT OpenCourseWare
+		http://ocw.mit.edu/
+	
+		base.css - styles common to all pages
+		v0.3
+		6 August 2012
+********************************************************************************************/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html {
+	font-size: 62.5%;	/* adjusts base font to 10px, allows rescaling by one-tenth per point (12px=1.2em, 16px=1.6em, 8px=0.8em and so on) */
+	font-family: arial, helvetica, sans-serif;
+
+}
+
+body {
+	min-height: 100%;
+	min-width: 960px;	
+	margin: 0 auto;
+	font-size: 1.2em;
+
+}
+
+
+@font-face {
+	font-family: TitilliumText22LLight;
+    src: url(../webfonts/TitilliumText22L002-webfont.eot);
+    src: url(../webfonts/TitilliumText22L002-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../webfonts/TitilliumText22L002-webfont.woff) format("woff"),
+         url(../webfonts/TitilliumText22L002-webfont.ttf) format("truetype"),
+         url(../webfonts/TitilliumText22L002-webfont.svg#TitilliumText22LLight) format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+	font-family: TitilliumText22LRegular;		/* Titillium Regular */
+    src: url(../webfonts/TitilliumText22L003-webfont.eot);
+    src: url(../webfonts/TitilliumText22L003-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../ocw/webfonts/TitilliumText22L003-webfont.woff) format("woff"),
+         url(../webfonts/TitilliumText22L003-webfont.ttf) format("truetype"),
+         url(../ocw/webfonts/TitilliumText22L003-webfont.svg#TitilliumText22LRegular) format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: TitilliumText22LBold;		/* Titillium Bold */
+    src: url(../webfonts/TitilliumText22L005-webfont.eot);
+    src: url(../webfonts/TitilliumText22L005-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../ocw/webfonts/TitilliumText22L005-webfont.woff) format("woff"),
+         url(../webfonts/TitilliumText22L005-webfont.ttf) format("truetype"),
+         url(../ocw/webfonts/TitilliumText22L005-webfont.svg#TitilliumText22LBold) format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+a img {
+	border: 0;
+}
+
+p {
+	margin-bottom: 10px;
+	color: #333;
+}
+
+p.zero {					/* use for content FCK forces into an unwanted paragraph */
+	margin-bottom: 0px;
+}
+
+a,
+a:visited {
+	color: #b30838;
+	text-decoration: none;
+}
+
+a:active,
+a:hover {
+	color: #ff9000;
+	text-decoration: underline;
+}
+
+#global_inner ul,
+#course_inner_section ul {
+	margin-bottom: 2em;
+}
+
+#global_inner ul li,
+#course_inner_section ul li {
+	margin-left: 195px;
+	margin-bottom: 1em;
+}
+
+#top {
+	width: 100%;
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_top.png");
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+#center_home {
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_center.png");
+	background-repeat: repeat-y;
+	background-position: top center;
+}
+
+#center_chp {
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_center2.png");
+	background-repeat: repeat-y;
+	background-position: top center;
+}
+
+#center_global {
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_center3.png");
+	background-repeat: repeat-y;
+	background-position: top center;
+}
+
+#center {
+	/* placeholder - impacts all pages *except* site home and chp */
+}
+
+#bottom {
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_bottom.png");
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+.logo {
+	margin: 25px 0;
+}
+
+/* header and footer div dimensions */
+
+#banner {
+	min-height: 98px;
+}
+
+#subscribe {
+	height: 98px;
+	min-width: 472px;
+}
+
+#subscribe .module {
+	height: 39px;
+	width: 430px;
+	float: right;
+	border-top: #000 solid 3px;
+	background-color: #3a3a3a;
+	background-image: url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_social.png");
+	background-repeat: repeat;
+	background-position: top left;
+	-webkit-border-radius: 0 0 14px 14px;					/* Saf3-4, iOS 1-3.2, Android ≤1.6 */
+	border-radius: 0 0 14px 14px;							/* Opera 10.5, IE9, Saf5, Chrome, FF4+, iOS 4, Android 2.1+ */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	-webkit-box-shadow: 2px 2px 0px 0px #000; 				/* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	box-shadow: 2px 2px 0px 0px #000; 						/* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+table.social,
+table.search {
+	margin: 2px 0 0 11px;
+	padding: 0;
+	color: #fff;
+	font-size: 0.9em;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 30px;
+	border-collapse: collapse;
+}
+
+table.search {
+	float: right;
+	margin-top: 7px;
+}
+
+table.social td.text {
+	padding-right: 5px;
+}
+
+table.search td.text2 {
+	text-align: right;
+	padding-left: 6px;
+}
+
+table.social td.black,
+table.search td.black {
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+}
+
+.greytext {
+	color: #fff;
+	background-color: #000;
+	margin-left: 5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+}
+
+.emailField {
+	width: 161px;
+}
+
+.searchField {
+	width: 155px;
+}
+
+.sub_button {
+	margin-left: -2px;
+	margin-right: 2px;
+}
+
+p.helplinks {
+	float: right;
+	margin: 6px 12px 0 0;
+	color: #fff;
+	font-size: 1.0em;
+}
+p.helplinks a,
+p.helplinks a:visited,
+table.search a,
+table.search a:visited {
+	color: #fff;
+	text-decoration: underline;
+}
+
+p.helplinks a:active,
+p.helplinks a:hover,
+table.search a:active,
+table.search a:hover {
+	text-decoration: underline;
+}
+
+select.transLang {
+	width: 185px;
+	margin-top: 6px;
+	border: 1px solid #333;
+}
+
+#mega {
+	height: 46px;
+}
+
+#search {
+	height: 46px;
+	min-width: 315px;
+}
+
+#footer #foot-c1,
+#footer #foot-c2,
+#footer #foot-c3,
+#footer #foot-c4,
+#footer #foot-c5 {
+	min-height: 165px;
+	margin-top: 35px;
+}
+
+#foot-c5 p.accent {
+	color: #999;
+	font-size: 1.0em;
+	width: 300px;
+	margin-top: 10px;
+	line-height: 2.0em;
+}
+
+ul.foot-bullet {
+	margin-top: 3px;
+}
+
+ul.foot-bullet li {
+	font-size: 0.9em;
+	margin-left: 2px;
+	line-height: 1.6em;
+	list-style-type: none;
+}
+
+ul.foot-bullet li:before {
+	content: '»';
+	display: inline;
+	color: #b30838;
+	margin-right: 4px;
+	top: -2px;
+	position: relative;
+}
+
+
+ul.foot-bullet li a,
+ul.foot-bullet li a:visited {
+	text-decoration: none;
+	color: #b30838;
+}
+
+ul.foot-bullet li a:active,
+ul.foot-bullet li a:hover {
+	text-decoration: underline;
+	color: #b30838;
+}
+
+#footer #foot-copy,
+#footer #foot-support {
+	min-height: 140px;
+}
+
+#footer #foot-c5,
+#footer #foot-support {
+	margin-left: 2px;
+	border-left: thin solid #d5c9ba;
+	padding-left: 20px;
+}
+
+/* header styles */
+
+h2.global {
+	font-family: TitilliumText22LBold, Verdana;
+	color: #b30838;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	font-weight: 200;
+	letter-spacing: 0.5px;
+}
+
+h2.subhead {
+	font-size: 1.2em;
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+h3.subsubhead {
+	font-size: 1.1em;
+	color: #000;
+	font-style: italic;
+	margin-bottom: 5px;
+}
+
+h4.footer,
+h4.dept_link {
+	font-family: TitilliumText22LBold, Verdana;
+	color: #363636;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	font-weight: 200;
+	letter-spacing: 0.5px;
+}
+
+p.callout {
+	color: #b30838;
+	font-size: 1.2em;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+
+.pullquote {
+	float: left;
+	width: 132px;
+	border-right: 1px solid #d5c9ba;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	margin: 3px 12px 20px 0;
+}
+
+.pullquote p {
+	font-size: 1.2em;
+	color: #aaa;
+}
+.pullquote p.quote {
+	text-indent: 2.2em;
+	padding-top: 4px;
+	background-image: URL("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/quote_open.png");
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+
+.pullquote p.sig {
+	font-family: TitilliumText22LRegular, Verdana;
+	font-weight: 500;
+	font-size: 1.0em;
+	color: #777;
+	text-align: right;
+	text-transform: uppercase;
+	padding-top: 30px;
+	margin-top: -12px;
+	margin-bottom: 0;
+	background-image: URL("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/quote_close.png");
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+.pullquote p.stat {
+	font-size: 6.6em;
+	letter-spacing: 1px;
+	color: #b30838;
+	font-family: TitilliumText22LBold, Verdana;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+.pullquote p.sig2 {
+	font-family: TitilliumText22LRegular, Verdana;
+	font-weight: 500;
+	font-size: 1.0em;
+	color: #777;
+	text-align: right;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+p.orange,
+p.orange a,
+p.orange a:visited {
+	color: #ff9000;
+	font-size: 1.0em;
+	text-decoration: none;
+}
+
+p.orange a:active,
+p.orange a:hover {
+	color: #b30838;
+	text-decoration: underline;
+}
+
+p.orange span.bullet {
+	font-size: 1.2em;
+}
+
+p.shift1 {
+	position: relative;
+	top: -19px;
+	left: 506px;
+	width: 150px;
+	margin-bottom: 0;
+}
+
+#foot-copy {
+	border-top: thin solid #d5c9ba;
+	padding-top: 30px;
+	width: 550px;
+}
+
+#foot-copy a img {
+	margin-right: 70px;
+}
+
+p.copyright {
+	color: #7b706b;
+	font-size: 0.9em;
+}
+
+
+/* Course List styles */
+
+h3.deptTitle {
+	font-size: 1.2em;
+	margin-top: 25px;
+	border-bottom: 1px solid #E4E5E0;
+	min-width: 50px;
+}
+
+.courseList {
+	background-color: #fff;
+	margin: 0 0 15px 0;
+	padding: 0 35px 0 0;
+	cellpadding: 0;
+	cellspacing: 0;	
+	border: none;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.courseList th {
+	background-color: #fff;
+	font-size: 1.1em;
+	padding: 6px;
+	text-align: left;
+	padding-left: 7px;
+}
+
+th.MCNcol {
+	min-width: 80px;
+	width: 80px;
+}
+
+th.CTcol {
+	min-width: 480px;
+	width: 480px;
+}
+
+th.CTcol2 {
+	min-width: 430px;
+	max-width: 520px;
+}
+
+th.LVcol {
+	min-width: 120px;
+	width: 120px;
+}
+
+p.top {
+	margin-top: -11px;
+	margin-left: 6px;
+	font-size: 0.9em;
+}
+
+img.top {
+	border: 1px solid #000;
+	margin-bottom: -1px;
+}
+
+td.topLink {
+	border-bottom: 1px solid #E4E5E0;
+}
+
+.courseList td {
+	padding: 5px 8px;
+}
+
+.courseList tr.odd {
+	background-color: #f3f0eb;
+}
+
+.courseList tr.even {
+	background-color: #fff;
+}
+
+.courseList tr.preview {
+	background-color: #ffcc66;
+}
+
+.courseList td a,
+.courseList td a:visited {
+	color: #b30838;
+}
+
+.courseList td a:hover,
+.courseList td a:active {
+	color: #ff9000;
+}
+
+
+/* Left-nav TLP expander styles */
+
+.mO {
+	color:#000;
+	cursor:pointer;
+	font-weight:normal;
+	padding-left: 0px;		/* was 10px */
+	background:transparent url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_left-nav.png") 74px 5px no-repeat; /* 1st # was 0 */
+	margin:5px 0;
+}
+
+.mC {
+	color:#000;
+	cursor:pointer;
+	font-weight:normal;
+	padding-left: 0px;		/* was 10px */
+	background:transparent url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_left-nav.png") 74px -43px no-repeat; /* 1st # was 0 */
+	margin:5px 0;
+}
+
+
+.tlp_links a {
+	font-size:.74em;
+	position:relative;
+	padding:2px 0;
+	/* display:block; */
+	color:#000;
+	text-decoration:none;
+	margin-bottom: -2px;
+}
+
+.tlp_links .expandCollapseTrans,
+.nav_links .expandCollapseTrans {
+	position:absolute;
+	left: 75px; 	/* was -10px; */
+}
+
+.tlp_links ul {
+	display:none;
+	margin-bottom:5px;
+	list-style:none;
+	padding:0;
+}
+
+.tlp_links li {
+	color:#000;
+	font-size:0.7em;
+	font-weight:normal;
+	padding-left:10px;
+	margin-left: 6px;
+	/* background:transparent url(../images/black-arrow.gif) 2px 8px no-repeat; */
+	/* background-position:2px 4px; */
+}
+
+#course_nav .tlp_links ul li a:link,
+#course_nav .tlp_links ul li a:visited {
+	_margin:0;
+	display:block;
+	color:#666666;
+	text-decoration:none;
+	width:130px;
+	padding: 7px 0px;
+	border: none;
+}
+
+#course_nav .tlp_links ul li a:hover,
+#course_nav .tlp_links ul li a:active {
+	color: #b30838;
+}
+
+#course_nav .tlp_links ul li {
+	padding: 0;
+	border: none;
+}
+
+.tlp_links ul.selected{ 
+	position:static;
+	left:0px;
+	display:block;
+	background:transparent;
+}
+.btn_close {
+			position: relative;
+			left: 442px;
+			top: 25px;
+		}

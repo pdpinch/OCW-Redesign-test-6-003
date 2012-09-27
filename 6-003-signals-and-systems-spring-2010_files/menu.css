@@ -1,0 +1,204 @@
+/*******************************************************************************************
+		MIT OpenCourseWare
+		http://ocw.mit.edu/
+	
+		menu.css - styles used in the August 2012 implementation of the mega-menu.
+		v0.3
+		6 August 2012
+********************************************************************************************/
+
+
+#menu {
+	list-style:none;
+	width:660px;
+	margin: 0;
+	height:36px;
+	margin: 1px 0 3px 0;
+	padding:6px 0 0 0;
+	border-left: 1px solid #333;
+	display: block;
+	position: relative;
+	z-index: 500;
+}
+
+#menu li {
+	float:left;
+	display:block;
+	text-align:center;
+	position:relative;
+	padding: 9px 14px 10px 19px;
+	margin-top: -5px;
+	border-right: 1px solid #333;
+}
+
+
+
+#menu li:hover,
+#menu li.selected {
+
+	background: #b30838;
+}
+
+#menu li a {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.5em; 
+	color: #fff;
+	display:block;
+	outline:0;
+	text-decoration:none;
+
+}
+
+#menu li:hover a {
+	color: #fff;
+}
+#menu li .drop {
+	padding-right:40px;
+	background:url("../images/nav_arrow.png") no-repeat right 7px;
+}
+#menu li:hover .drop {
+	background:url("../images/nav_arrow.png") no-repeat right 7px;
+}
+
+.dropdown_1column-a,
+.dropdown_5columns-a {
+	margin: 13px auto;
+	float:left;
+	position:absolute;
+	left:-999em; /* Hides the drop down */
+	text-align:left;
+	padding:10px 5px 10px 5px;
+	border: none;
+	border-top: none;
+	background: #fff;
+
+	/* Rounded Corners */
+	-moz-border-radius: 0px 5px 5px 5px;
+	-webkit-border-radius: 0px 5px 5px 5px;
+	border-radius: 0px 5px 5px 5px;
+	
+	/* Drop Shadow */
+	-webkit-box-shadow: 2px 2px 5px 0px #000; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  		    box-shadow: 2px 2px 5px 0px #000; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+.dropdown_1column {width: 140px;}
+.dropdown_1column-a { width: 210px; }
+.dropdown_5columns {width: 700px;}
+.dropdown_5columns-a { width: 640px;}
+
+#menu li:hover .dropdown_1column-a, 
+#menu li:hover .dropdown_5columns-a {
+	left:0px;
+	top: 28px;
+	border-top: 3px solid #000;
+}
+
+.col_1a,
+.col_5a {
+	display:inline;
+	float: left;
+	position:relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.col_1b {
+	display:inline;
+	float: right;
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.col_1a { width: 200px; }
+.col_1b { width: 200px; }
+.col_3 {width:420px; margin-left: 15px;}
+.col_5 {width:640px;}
+
+#menu .menu_right {
+	float:right;
+	margin-right:0px;
+}
+#menu li .align_right {
+	/* Rounded Corners */
+	-moz-border-radius: 5px 0px 5px 5px;
+    -webkit-border-radius: 5px 0px 5px 5px;
+    border-radius: 5px 0px 5px 5px;
+}
+
+#menu li:hover .align_right {
+	left:auto;
+	right:-1px;
+	top:auto;
+}
+
+#menu li:hover div a {
+	font-size: 1.0em;
+	color:#b30838;
+}
+#menu li:hover div a:hover {
+	color:#ff9000;
+	text-decoration: underline;
+}
+
+#menu li ul {
+	list-style:none;
+	padding:0;
+	margin:0 0 12px 0;
+}
+#menu li ul li {
+	font-size: 1.1em;
+	line-height: 0.2em;
+	position:relative;
+	margin:0;
+	float:none;
+	text-align:left;
+	border: none;
+}
+
+#menu li ul li:hover {
+	background: none;
+}
+
+#menu ul.nav-bullet {
+	padding: 0 5px;
+	margin: 2px auto;
+}
+
+#menu ul.nav-bullet li:before {
+	content: '»';
+	display: inline;
+	color: #b30838;
+	left: -12px;
+	top: 1px;
+	position: relative;
+}
+#menu li ul li,
+#menu li ul li:hover {
+	padding: none;
+	margin: 2px 0 5px 0;
+}
+
+#menu h2.nav {
+	font-family: TitilliumText22LBold, Verdana;
+	color: #333;
+	text-transform: none;
+	font-size: 1.3em;
+	font-weight: 200;
+	letter-spacing: 0.5px;
+}
+
+.mega-courses {
+	background-image:url("http://web.mit.edu/user/k/c/kcanavan/www/ocw/images/bg_mega-courses.png");
+	background-repeat: repeat-y;
+	background-position: top left;
+}
+
+.mega-div-bottom {
+	border-bottom: 1px solid #a49786;
+}
+
+.mega-div-top {
+	border-top: 1px solid #a49786;
+}
